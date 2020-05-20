@@ -58,7 +58,7 @@ if __name__ == "__main__":
     parser.add_argument("-w", "--weighted", type=str, default=False,
                         help="Whether to create MST from a weighted graph with rank lists scores as weights")
     parser.add_argument("-omf", "--out_mst_file", type=str, default=None,
-                        help="Output Minimum Spanning Tree file")
+                        help="Output Maximum Spanning Tree file")
     args = parser.parse_args()
 
     ranks_file = args.ranks_file

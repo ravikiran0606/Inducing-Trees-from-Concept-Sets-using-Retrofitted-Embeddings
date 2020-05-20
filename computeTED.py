@@ -54,7 +54,7 @@ def str2bool(input_str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-mf", "--mst_file", type=str, default=None,
-                        help="Input Minimum Spanning Tree file")
+                        help="Input Maximum Spanning Tree file")
     parser.add_argument("-gt", "--ground_truth", type=str, default=None,
                         help="Ground truth Lexicon with children and parents information")
     parser.add_argument("-sp", "--save_plots", type=str, default="False",
@@ -80,14 +80,14 @@ if __name__ == "__main__":
         nx.draw(gt_graph, with_labels=True)
         plt.savefig(plot_dir + gt_file_name + ".png")
 
-    # gt_tree = nx.bfs_tree(gt_graph, source="root")
-    # gt_nodes_dict = {}
-    # for edge in gt_tree.edges():
-    #     if edge[0] not in gt_nodes_dict:
-    #         gt_nodes_dict[edge[0]] = zss.Node(edge[0])
-    #     if edge[1] not in gt_nodes_dict:
-    #         gt_nodes_dict[edge[1]] = zss.Node(edge[1])
-    #     gt_nodes_dict[edge[0]].addkid(gt_nodes_dict[edge[1]])
+    gt_tree = nx.bfs_tree(gt_graph, source="root")
+    gt_nodes_dict = {}
+    for edge in gt_tree.edges():
+        if edge[0] not in gt_nodes_dict:
+            gt_nodes_dict[edge[0]] = zss.Node(edge[0])
+        if edge[1] not in gt_nodes_dict:
+            gt_nodes_dict[edge[1]] = zss.Node(edge[1])
+        gt_nodes_dict[edge[0]].addkid(gt_nodes_dict[edge[1]])
 
     # Generated Tree construction:
     gen_graph = nx.read_weighted_edgelist(mst_file)
@@ -100,19 +100,19 @@ if __name__ == "__main__":
         gen_file_name = mst_file.split("/")[-1].split(".")[0]
         plt.savefig(plot_dir + gen_file_name + ".png")
 
-    # gen_tree = nx.bfs_tree(gen_graph, source="root")
-    #
-    # gen_nodes_dict = {}
-    # for edge in gen_tree.edges():
-    #     if edge[0] not in gen_nodes_dict:
-    #         gen_nodes_dict[edge[0]] = zss.Node(edge[0])
-    #     if edge[1] not in gen_nodes_dict:
-    #         gen_nodes_dict[edge[1]] = zss.Node(edge[1])
-    #     gen_nodes_dict[edge[0]].addkid(gen_nodes_dict[edge[1]])
+    gen_tree = nx.bfs_tree(gen_graph, source="root")
+
+    gen_nodes_dict = {}
+    for edge in gen_tree.edges():
+        if edge[0] not in gen_nodes_dict:
+            gen_nodes_dict[edge[0]] = zss.Node(edge[0])
+        if edge[1] not in gen_nodes_dict:
+            gen_nodes_dict[edge[1]] = zss.Node(edge[1])
+        gen_nodes_dict[edge[0]].addkid(gen_nodes_dict[edge[1]])
 
     # Computing the Tree edit distance:
-    # tree_edit_distance = zss.distance(gt_nodes_dict['root'], gen_nodes_dict['root'], zss.Node.get_children, insert_cost=insertCost, remove_cost=removeCost, update_cost=updateCost)
-    # print("Tree Edit Distance = ", tree_edit_distance)
+    tree_edit_distance = zss.distance(gt_nodes_dict['root'], gen_nodes_dict['root'], zss.Node.get_children, insert_cost=insertCost, remove_cost=removeCost, update_cost=updateCost)
+    print("Tree Edit Distance = ", tree_edit_distance)
 
 
     # print(zss.simple_distance(gt_nodes_dict['root'], gen_nodes_dict['root']))

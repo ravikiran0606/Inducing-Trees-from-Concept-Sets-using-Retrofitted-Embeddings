@@ -48,9 +48,9 @@ def str2bool(input_str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-bmf", "--baseline_mst_file", type=str, default=None,
-                        help="Baseline Minimum Spanning Tree file")
+                        help="Baseline Maximum Spanning Tree file")
     parser.add_argument("-cmf", "--comparison_mst_file", type=str, default=None,
-                        help="Comparison Minimum Spanning Tree file")
+                        help="Comparison Maximum Spanning Tree file")
     parser.add_argument("-gt", "--ground_truth", type=str, default=None,
                         help="Ground truth Lexicon with children and parents information")
     parser.add_argument("-gtsns", "--gt_sample_nodes_set", type=str, default=None,
