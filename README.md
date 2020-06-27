@@ -26,7 +26,9 @@ where, <br>
 To train the super-type classifier model, use the following command,
 
 ```
-python3 trainClassifier.py --input_data=<training_data>.pkl --model_type=<model_type> --embeddings_path=<embeddings_path> --embeddings_dims=<embeddings_dims> --vector_features=<feature_type> --out_classifier_model=<output_model_path>.pkl
+python3 trainClassifier.py --input_data=<training_data>.pkl --model_type=<model_type> 
+--embeddings_path=<embeddings_path> --embeddings_dims=<embeddings_dims> --vector_features=<feature_type> 
+--out_classifier_model=<output_model_path>.pkl
 ```
 
 where, <br>
@@ -45,13 +47,17 @@ vector_diff computes the difference between the word embeddings of the node pair
 To generate the ranks file for the methods (Pre-trained Embeddings (method 1), Domain-specific Corpus-trained Embeddings (method 2), Super-type Classification using Pre-trained Embeddings (method 4), Super-type Classification using Retrofitted Embeddings (method 5)), use the following command,
 
 ```
-python3 generateRanks.py --lexicon_to_evaluate=<ground_truth_lexicon> --embeddings_path=<embeddings_path> --embeddings_dims=<embeddings_dims> --classifier_model_path=<super_type_classifier_model_path>.pkl --out_ranks_file=<output_ranks_file_path>.jl
+python3 generateRanks.py --lexicon_to_evaluate=<ground_truth_lexicon> --embeddings_path=<embeddings_path> 
+--embeddings_dims=<embeddings_dims> --classifier_model_path=<super_type_classifier_model_path>.pkl 
+--out_ranks_file=<output_ranks_file_path>.jl
 ```
 
 To generate the ranks file for the method (Retrofitted Embedding Transfer with Super-Type Classification (method 5)), use the following command,
 
 ```
-python3 generateRanksBestMethod.py --lexicon_to_evaluate=<ground_truth_lexicon> --embeddings_path=<embeddings_path> --embeddings_dims=<embeddings_dims> --classifier_model_path=<super_type_classifier_model_path>.pkl --out_ranks_file=<output_ranks_file_path>.jl
+python3 generateRanksBestMethod.py --lexicon_to_evaluate=<ground_truth_lexicon> --embeddings_path=<embeddings_path> 
+--embeddings_dims=<embeddings_dims> --classifier_model_path=<super_type_classifier_model_path>.pkl 
+--out_ranks_file=<output_ranks_file_path>.jl
 ```
 
 where, <br>
@@ -67,7 +73,8 @@ where, <br>
 To compute the MAP and nDCG metric, use the following command,
 
 ```
-python3 computeRankMetrics.py --ground_truth=<ground_truth_lexicon> --baseline_ranks_file=<baseline_ranks>.jl --comparison_ranks_file=<comparison_ranks>.jl
+python3 computeRankMetrics.py --ground_truth=<ground_truth_lexicon> --baseline_ranks_file=<baseline_ranks>.jl 
+--comparison_ranks_file=<comparison_ranks>.jl
 ```
 
 where, <br>
@@ -82,7 +89,8 @@ where, <br>
 To generate the MST Tree from the ranks file, use the following command,
 
 ```
-python3 computeMST.py --ranks_file=<input_ranks_file> --max_num_edges=<max_num_edges> --weighted=<weight_condition> --out_mst_file=<output_mst_file>
+python3 computeMST.py --ranks_file=<input_ranks_file> --max_num_edges=<max_num_edges> --weighted=<weight_condition> 
+--out_mst_file=<output_mst_file>
 ```
 
 where, <br>
@@ -98,7 +106,8 @@ where, <br>
 To compute the approximate tree similarity metrics, use the following command,
 
 ```
-python3 computeApproxTreeSimilarity.py --baseline_mst_file=<baseline_mst_tree> --comparison_mst_file=<comparison_mst_tree> --ground_truth=<ground_truth_lexicon> --gt_sample_nodes_set=<sample_nodes_set>
+python3 computeApproxTreeSimilarity.py --baseline_mst_file=<baseline_mst_tree> --comparison_mst_file=<comparison_mst_tree> 
+--ground_truth=<ground_truth_lexicon> --gt_sample_nodes_set=<sample_nodes_set>
 ```
 
 where, <br>
@@ -114,7 +123,8 @@ where, <br>
 To compute the Tree Edit distance metric, use the following command,
 
 ```
-python3 computeTED.py --save_plots=<save_condition> --plot_dir=<plot_directory> --mst_file=<mst_tree> --ground_truth=<ground_truth_lexicon>
+python3 computeTED.py --save_plots=<save_condition> --plot_dir=<plot_directory> --mst_file=<mst_tree> 
+--ground_truth=<ground_truth_lexicon>
 ```
 
 where, <br>
