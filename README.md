@@ -4,12 +4,12 @@ Code Repository for the Paper: Zero-Shot Taxonomy Induction using Representation
 
 ## Modules
 
-### Retrofitting the embeddings
+### 1. Retrofitting the embeddings
 
 Retrofitting is implemented based on this paper: [Retrofitting Word Vectors to Semantic Lexicons](https://arxiv.org/abs/1411.4166)
 
 
-### Super-type classifier
+### 2. Super-type classifier
 
 To create the training data from the taxonomy, use the following command,
  
@@ -42,7 +42,7 @@ vector_diff computes the difference between the word embeddings of the node pair
 <output_model_path> = Output model path to store the trained model <br>
 
 
-### Ranking the neighbors
+### 3. Ranking the neighbors
 
 To generate the ranks file for the methods (Pre-trained Embeddings (method 1), Domain-specific Corpus-trained Embeddings (method 2), Super-type Classification using Pre-trained Embeddings (method 4), Super-type Classification using Retrofitted Embeddings (method 5)), use the following command,
 
@@ -68,7 +68,7 @@ where, <br>
 <output_ranks_file_path> = Output path to store the generated ranks file (needed for computing the MAP and nDCG metrics in the Rank metrics module)
 
 
-### Computing Rank metrics (MAP and nDCG)
+### 4. Computing Rank metrics (MAP and nDCG)
 
 To compute the MAP and nDCG metric, use the following command,
 
@@ -84,7 +84,7 @@ where, <br>
 <comparison_ranks> = Comparison Ranks file <br>
 
 
-### Generating MST Tree
+### 5. Generating MST Tree
 
 To generate the MST Tree from the ranks file, use the following command,
 
@@ -101,7 +101,7 @@ where, <br>
 <output_mst_file> = Generated MST file (stored as weighted edge list representation as in NetworkX package) <br>
 
 
-### Computing Approximate Tree Similarity Metrics
+### 6. Computing Approximate Tree Similarity Metrics
 
 To compute the approximate tree similarity metrics, use the following command,
 
@@ -118,7 +118,7 @@ where, <br>
 <sample_nodes_set> = Sample nodes set from the Ground Truth tree which are used as source nodes in the computation of Jaccard Similarity metric on the shortest paths. <br>
 
 
-### Computing Tree Edit Distance Metric
+### 7. Computing Tree Edit Distance Metric
 
 To compute the Tree Edit distance metric, use the following command,
 
@@ -136,7 +136,7 @@ where, <br>
 
 Note that it is not feasible to compute the Tree Edit Distance metric for a large tree (with number of nodes >=1000) because of its time complexity.
 
-### Additional Utilities
+### 8. Additional Utilities
 
 To compute the various statistics about the taxonomy, use the following command,
 
